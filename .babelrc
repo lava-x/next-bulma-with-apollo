@@ -22,6 +22,7 @@
         "alias": {
           "cwd": "babelrc",
           "components": "./components",
+          "containers": "./containers",
           "screens": "./screens",
           "styles": "./styles",
           "assets": "./static/assets"

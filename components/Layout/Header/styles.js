@@ -2,11 +2,6 @@ import css from 'styled-jsx/css';
 
 export default css`
   .navbar {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 40px;
-    z-index: 1;
     text-align: center;
 
     &.is-transparent {
