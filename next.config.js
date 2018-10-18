@@ -6,6 +6,8 @@ const nextConfig = {
   exportPathMap: function() {
     return {
       '/': { page: '/' },
+      '/todo': { page: '/todo' },
+      '/test': { page: '/test' },
     };
   },
 };
