@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import PostUpvoter from 'components/PostUpvoter';
+import PostVoter from 'components/PostVoter';
 
 export default class Posts extends PureComponent {
   render() {
-    const { posts, meta, loading, onActionUpvote } = this.props;
+    const { posts, meta, loading, onActionVote } = this.props;
     const areMorePosts = posts.length < meta.count;
     return (
       <div className="p10 has-text-centered">
@@ -15,10 +15,10 @@ export default class Posts extends PureComponent {
                   <p className="has-text-weight-bold">{post.title}</p>
                   <small>{post.createdAt}</small>
                 </div>
-                <PostUpvoter
+                <PostVoter
                   id={post.id}
                   votes={post.votes}
-                  onActionUpvote={onActionUpvote}
+                  onActionVote={onActionVote}
                 />
               </div>
             </div>

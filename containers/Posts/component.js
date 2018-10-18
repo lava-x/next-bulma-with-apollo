@@ -24,15 +24,15 @@ export default class PostsContainer extends PureComponent {
     };
   };
 
-  onActionUpvote = (id, votes) => {
+  onActionVote = (id, votes) => {
     this.props.mutate({
-      variables: { id, votes: votes + 1 },
+      variables: { id, votes },
       optimisticResponse: {
         __typename: 'Mutation',
         updatePost: {
           __typename: 'Post',
           id,
-          votes: votes + 1,
+          votes: votes,
         },
       },
     });
@@ -51,7 +51,7 @@ export default class PostsContainer extends PureComponent {
         meta={_allPostsMeta}
         loading={loading}
         onActionLoadMore={this.onActionLoadMore(allPosts, fetchMore)}
-        onActionUpvote={this.onActionUpvote}
+        onActionVote={this.onActionVote}
       />
     );
   }
