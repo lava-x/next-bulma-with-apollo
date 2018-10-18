@@ -3,11 +3,11 @@ import Todo from 'components/Todo';
 
 const TodoList = ({ todos, onTodoClick }) => {
   return (
-    <ul>
+    <div className="field is-grouped is-grouped-multiline">
       {todos.map((todo) => (
         <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />
       ))}
-    </ul>
+    </div>
   );
 };
 

@@ -10,29 +10,39 @@ const ADD_TODO = gql`
   }
 `;
 
-const AddTodo = ({ mutate }) => {
+const AddTodo = ({ mutate, ...rest }) => {
   let input;
 
   return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (!input.value.trim()) {
-            return;
-          }
-          mutate({ variables: { text: input.value } });
-          input.value = '';
-        }}
-      >
-        <input
-          ref={(node) => {
-            input = node;
-          }}
-        />
-        <button type="submit">Add Todo</button>
-      </form>
-    </div>
+    <form
+      {...rest}
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (!input.value.trim()) {
+          return;
+        }
+        mutate({ variables: { text: input.value } });
+        input.value = '';
+      }}
+    >
+      <div className="field has-addons is-grouped is-grouped-centered">
+        <div className="control">
+          <input
+            ref={(node) => {
+              input = node;
+            }}
+            className="input is-medium"
+            type="text"
+            placeholder="What to do?"
+          />
+        </div>
+        <div className="control ">
+          <button type="submit" className="button is-primary is-medium">
+            Add
+          </button>
+        </div>
+      </div>
+    </form>
   );
 };
 

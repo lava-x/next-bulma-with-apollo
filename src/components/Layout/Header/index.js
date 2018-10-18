@@ -30,6 +30,13 @@ class Header extends Component {
             <div className={'navbar-menu'}>
               <div className="navbar-end">
                 <ActiveLink
+                  href="/todo"
+                  activeClass="active"
+                  className="navbar-item"
+                  alt="Todo"
+                  title="Todo"
+                />
+                <ActiveLink
                   href="/test"
                   activeClass="active"
                   className="navbar-item"
