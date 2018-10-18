@@ -26,8 +26,8 @@
           "config": "./src/config",
           "containers": "./src/containers",
           "graphql": "./src/graphql",
-          "screens": "./src/screens",
-          "styles": "./src/styles",
+          "screens": "./screens",
+          "styles": "./styles",
           "assets": "./static/assets"
         }
       }
