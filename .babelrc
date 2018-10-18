@@ -21,10 +21,10 @@
         "root": ["./"],
         "alias": {
           "cwd": "babelrc",
-          "components": "./components",
-          "containers": "./containers",
-          "screens": "./screens",
-          "styles": "./styles",
+          "components": "./src/components",
+          "containers": "./src/containers",
+          "screens": "./src/screens",
+          "styles": "./src/styles",
           "assets": "./static/assets"
         }
       }
