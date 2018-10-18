@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Moment from 'react-moment';
 import PostVoter from 'components/PostVoter';
 
 export default class Posts extends PureComponent {
@@ -13,7 +14,11 @@ export default class Posts extends PureComponent {
               <div className="box">
                 <div className="content">
                   <p className="has-text-weight-bold">{post.title}</p>
-                  <small>{post.createdAt}</small>
+                  <small>
+                    <Moment format="do,MMM YYYY hh:mm:ss A">
+                      {post.createdAt}
+                    </Moment>
+                  </small>
                 </div>
                 <PostVoter
                   id={post.id}
