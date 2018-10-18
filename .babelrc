@@ -15,6 +15,7 @@
     }
   },
   "plugins": [
+    "import-graphql",
     [
       "module-resolver",
       {
@@ -22,7 +23,9 @@
         "alias": {
           "cwd": "babelrc",
           "components": "./src/components",
+          "config": "./src/config",
           "containers": "./src/containers",
+          "graphql": "./src/graphql",
           "screens": "./src/screens",
           "styles": "./src/styles",
           "assets": "./static/assets"
