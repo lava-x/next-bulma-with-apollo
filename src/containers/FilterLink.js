@@ -1,31 +1,23 @@
-import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
-
+import { compose, graphql } from 'react-apollo';
+import { queries, mutations } from 'graphql';
 import Link from 'components/Link';
 
-const VISIBILITY_QUERY = gql`
-  {
-    visibilityFilter @client
-  }
-`;
+const { GET_FILTER } = queries.Todos;
+const { SET_TODO_FILTER } = mutations.Todos;
 
-const withActiveState = graphql(VISIBILITY_QUERY, {
+const withActiveState = graphql(GET_FILTER, {
   props: ({ ownProps, data }) => ({
     active: ownProps.filter === data.visibilityFilter,
   }),
 });
 
-const VISIBILITY_MUTATION = gql`
-  mutation SetFilter($filter: String!) {
-    visibilityFilter(filter: $filter) @client
-  }
-`;
-const setVisibilityFilter = graphql(VISIBILITY_MUTATION, {
+const withVisibilityFilter = graphql(SET_TODO_FILTER, {
   props: ({ mutate, ownProps }) => ({
     onClick: () => mutate({ variables: { filter: ownProps.filter } }),
   }),
 });
 
-const FilterLink = setVisibilityFilter(withActiveState(Link));
-
-export default FilterLink;
+export default compose(
+  withVisibilityFilter,
+  withActiveState
+)(Link);

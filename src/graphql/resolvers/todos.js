@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { queries } from '../';
 
 let nextTodoId = 0;
 const todos = {
@@ -8,16 +9,8 @@ const todos = {
   resolvers: {
     Mutation: {
       addTodo: (_, { text }, { cache }) => {
-        const query = gql`
-          query GetTodos {
-            todos @client {
-              id
-              text
-              completed
-            }
-          }
-        `;
-        const previous = cache.readQuery({ query });
+        const { GET_TODOS } = queries.Todos;
+        const previous = cache.readQuery({ query: GET_TODOS });
         const newTodo = {
           id: nextTodoId++,
           text,

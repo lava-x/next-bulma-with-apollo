@@ -1,6 +1,6 @@
-import graphql from 'graphql-tag';
+import gql from 'graphql-tag';
 
-export default graphql`
+export const GET_TODOS = gql`
   query GetTodos {
     todos @client {
       id
@@ -10,3 +10,14 @@ export default graphql`
     visibilityFilter @client
   }
 `;
+
+export const GET_FILTER = gql`
+  query {
+    visibilityFilter @client
+  }
+`;
+
+export default {
+  GET_TODOS,
+  GET_FILTER,
+};

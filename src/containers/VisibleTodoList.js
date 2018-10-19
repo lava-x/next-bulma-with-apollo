@@ -1,8 +1,9 @@
-import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
 import TodoList from 'components/TodoList';
-import { queries } from 'graphql';
+import { queries, mutations } from 'graphql';
 
+const { GET_TODOS } = queries.Todos;
+const { TOGGLE_TODO } = mutations.Todos;
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
     case 'SHOW_ALL':
@@ -16,7 +17,7 @@ const getVisibleTodos = (todos, filter) => {
   }
 };
 
-const withTodos = graphql(queries.todos, {
+const withTodos = graphql(GET_TODOS, {
   props: ({ data }) => {
     if (data.loading || data.error) return { todos: [] };
     return {
@@ -25,14 +26,8 @@ const withTodos = graphql(queries.todos, {
   },
 });
 
-const TODO_MUTATION = gql`
-  mutation ToggleTodo($id: Int!) {
-    toggleTodo(id: $id) @client
-  }
-`;
-
-const toggleTodo = graphql(TODO_MUTATION, {
-  props: ({ mutate, ...rest }) => {
+const withToggleTodo = graphql(TOGGLE_TODO, {
+  props: ({ mutate }) => {
     return {
       onTodoClick: (id) => mutate({ variables: { id } }),
     };
@@ -40,6 +35,6 @@ const toggleTodo = graphql(TODO_MUTATION, {
 });
 
 export default compose(
-  toggleTodo,
-  withTodos
+  withTodos,
+  withToggleTodo
 )(TodoList);

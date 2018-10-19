@@ -1,15 +1,8 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import { mutations } from 'graphql';
 
-const ADD_TODO = gql`
-  mutation addTodo($text: String!) {
-    addTodo(text: $text) @client {
-      id
-    }
-  }
-`;
-
+const { ADD_TODO } = mutations.Todos;
 const AddTodo = ({ mutate, ...rest }) => {
   let input;
 
