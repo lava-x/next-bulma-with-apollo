@@ -1,10 +1,12 @@
 import App, { Container } from 'next/app';
+import Head from 'next/head';
 import { ApolloProvider } from 'react-apollo';
 import React from 'react';
 import NProgress from 'nprogress';
 import Router, { withRouter } from 'next/router';
 import Layout from 'components/Layout';
 import withApolloClient from 'config/with-apollo-client';
+import 'styles/styles.scss';
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
@@ -24,6 +26,9 @@ class MyApp extends App {
     const { Component, pageProps, apolloClient } = this.props;
     return (
       <Container>
+        <Head>
+          <title>Lava X | NextJS with Bulma Starter</title>
+        </Head>
         <ApolloProvider client={apolloClient}>
           <Layout>
             <Component {...pageProps} />
@@ -34,4 +39,4 @@ class MyApp extends App {
   }
 }
 
-export default withApolloClient(MyApp);
+export default withRouter(withApolloClient(MyApp));
