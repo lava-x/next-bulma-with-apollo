@@ -4,8 +4,10 @@ import { ApolloProvider } from 'react-apollo';
 import React from 'react';
 import NProgress from 'nprogress';
 import Router, { withRouter } from 'next/router';
+import { I18nextProvider } from 'react-i18next';
 import Layout from 'components/Layout';
 import withApolloClient from 'config/with-apollo-client';
+import initialI18nInstance from 'config/i18n';
 import 'styles/styles.scss';
 
 Router.onRouteChangeStart = () => NProgress.start();
@@ -30,9 +32,11 @@ class MyApp extends App {
           <title>Lava X | NextJS with Bulma Starter</title>
         </Head>
         <ApolloProvider client={apolloClient}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <I18nextProvider i18n={initialI18nInstance}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </I18nextProvider>
         </ApolloProvider>
       </Container>
     );

@@ -26,6 +26,7 @@
           "config": "./src/config",
           "containers": "./src/containers",
           "graphql": "./src/graphql",
+          "locales": "./src/locales",
           "screens": "./screens",
           "styles": "./styles",
           "assets": "./static/assets"

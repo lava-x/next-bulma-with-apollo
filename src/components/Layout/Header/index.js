@@ -43,6 +43,13 @@ class Header extends Component {
                   alt="test page"
                   title="Test Page"
                 />
+                <ActiveLink
+                  href="/translate"
+                  activeClass="active"
+                  className="navbar-item"
+                  alt="Translate page"
+                  title="Translate Page"
+                />
               </div>
             </div>
           </div>
