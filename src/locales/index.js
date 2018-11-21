@@ -1,4 +1,5 @@
 const locales = {};
+const langs = [];
 const req = require.context('.', true, /\.json$/);
 req.keys().forEach((key) => {
   // extract language name e.g: en, de, cn, bm
@@ -10,9 +11,12 @@ req.keys().forEach((key) => {
   // check if lang is empty, if empty then create a lang object
   if (!locales[lang]) {
     locales[lang] = {};
+    langs.push(lang);
   }
   // assign key for specified lang
   locales[lang][keyName] = req(key);
 });
+
+export const languages = langs;
 
 export default locales;
