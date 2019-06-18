@@ -4,6 +4,7 @@ import { queries, mutations } from 'graphql';
 
 const { GET_TODOS } = queries.Todos;
 const { TOGGLE_TODO } = mutations.Todos;
+
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
     case 'SHOW_ALL':

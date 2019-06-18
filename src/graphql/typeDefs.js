@@ -1,17 +1,19 @@
-export default `
-type Todo {
-  id: Int!
-  text: String!
-  completed: Boolean!
-}
+import gql from 'graphql-tag';
 
-type Mutation {
-  addTodo(text: String!): Todo
-  toggleTodo(id: Int!): Todo
-}
+export default gql`
+  extend type Todo {
+    id: Int!
+    text: String!
+    completed: Boolean!
+  }
 
-type Query {
-  visibilityFilter: String
-  todos: [Todo]
-}
+  extend type Mutation {
+    addTodo(text: String!): Todo
+    toggleTodo(id: Int!): Todo
+  }
+
+  extend type Query {
+    visibilityFilter: String
+    todos: [Todo]
+  }
 `;
