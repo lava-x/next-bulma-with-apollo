@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import XHR from 'i18next-xhr-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { initReactI18next } from 'react-i18next';
+import { reactI18nextModule } from 'react-i18next';
 import translations from 'locales';
 
 const options = {
@@ -23,7 +23,7 @@ if (process.browser) {
   i18n
     .use(XHR)
     .use(LanguageDetector)
-    .use(initReactI18next); // if not using I18nextProvider
+    .use(reactI18nextModule); // if not using I18nextProvider
 }
 
 if (!i18n.isInitialized) i18n.init(options);
